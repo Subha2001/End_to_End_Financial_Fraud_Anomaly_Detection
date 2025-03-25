@@ -6,6 +6,13 @@ __pycache__/
 # C extensions
 *.so
 
+# Dataset size is huge, ignore right now
+data/
+
+# No need of mlruns now
+mlruns/
+src/
+
 # Distribution / packaging
 .Python
 build/
