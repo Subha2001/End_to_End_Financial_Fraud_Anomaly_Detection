@@ -103,6 +103,8 @@ def process_data_pipeline(df):
 
     return X_train_resampled, y_train_resampled, X_val_transformed, y_val, X_test_transformed, y_test
 
+'''
+# Example Usage
 if __name__ == "__main__":
     # Load data using the function from data_ingestion.py
     df = data_ingestion.load_financial_fraud_data()
@@ -118,3 +120,4 @@ if __name__ == "__main__":
         print("y_test shape:", y_test.shape)
     else:
         print("Failed to load data from data_ingestion.py")
+        '''

@@ -22,7 +22,7 @@ def load_financial_fraud_data(filepath = r"C:\End_to_End_Financial_Fraud_Anomaly
         print(f"Error loading file: {e}")
         return None
 
-
+'''
 # Example Usage
 if __name__ == "__main__":
     df = load_financial_fraud_data()
@@ -32,3 +32,4 @@ if __name__ == "__main__":
 
     else:
         print("Data loading failed.")
+        '''
