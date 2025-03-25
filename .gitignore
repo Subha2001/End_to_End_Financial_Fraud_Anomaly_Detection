@@ -8,10 +8,10 @@ __pycache__/
 
 # Dataset size is huge, ignore right now
 data/
+artifacts/
 
 # No need of mlruns now
 mlruns/
-src/
 
 # Distribution / packaging
 .Python
