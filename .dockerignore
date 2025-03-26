@@ -4,6 +4,9 @@ node_modules
 # Ignore log files
 *.log
 
+# Notebooks are not required, since we build our model in src folder
+notebooks/
+
 # Ignore datasets because model already created
 artifacts/
 data/
@@ -11,6 +14,7 @@ data/
 # Ignore MLFlow files
 mlartifacts/
 mlruns/
+mlflow_bug.py
 
 # Ignore build directories
 dist
