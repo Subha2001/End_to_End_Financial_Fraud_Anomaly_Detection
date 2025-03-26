@@ -31,7 +31,7 @@ st.markdown("""
     """, unsafe_allow_html=True)
 
 # Display the title and subtitle
-st.markdown('<div class="title">Financial Fraud Detection</div>', unsafe_allow_html=True)
+st.markdown('<div class="title">Financial Fraud Anomaly Detection</div>', unsafe_allow_html=True)
 st.markdown('<div class="subtitle">Enter the transaction details below to get the prediction.</div>', unsafe_allow_html=True)
 
 # Expandable instructions section
