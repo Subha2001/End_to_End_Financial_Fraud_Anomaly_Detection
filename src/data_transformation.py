@@ -104,7 +104,7 @@ def process_data_pipeline(df):
     return X_train_resampled, y_train_resampled, X_val_transformed, y_val, X_test_transformed, y_test
 
 '''
-# Example Usage
+# For Example
 if __name__ == "__main__":
     # Load data using the function from data_ingestion.py
     df = data_ingestion.load_financial_fraud_data()

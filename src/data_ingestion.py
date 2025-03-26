@@ -23,7 +23,7 @@ def load_financial_fraud_data(filepath = r"C:\End_to_End_Financial_Fraud_Anomaly
         return None
 
 '''
-# Example Usage
+# For Example
 if __name__ == "__main__":
     df = load_financial_fraud_data()
     if df is not None:
