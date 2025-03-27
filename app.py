@@ -2,7 +2,7 @@ import streamlit as st
 from src.prediction import predict_fraud
 
 # Set the page configuration
-st.set_page_config(page_title="Financial Fraud Detection", layout="centered")
+st.set_page_config(page_title="Financial Fraud Anomaly Detection", layout="centered")
 
 # Inject custom CSS for enhanced styling
 st.markdown("""

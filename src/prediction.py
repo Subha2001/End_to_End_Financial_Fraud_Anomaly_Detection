@@ -2,12 +2,21 @@ import joblib
 import pandas as pd
 import numpy as np
 from sklearn.preprocessing import OneHotEncoder
+import os
 
 def predict_fraud(input_data, model_path='model/XGBoost_model.joblib'):
     """
     Loads a saved XGBoost model and predicts fraud based on input data.
     """
     try:
+        # Check if the model file exists, if not, try the alternative path.
+        if not os.path.exists(model_path):
+            alternative_path = 'app/model/XGBoost_model.joblib'
+            if os.path.exists(alternative_path):
+                model_path = alternative_path
+            else:
+                raise FileNotFoundError(f"Model file not found at {model_path} or {alternative_path}")
+
         # Load the trained XGBoost model
         loaded_model = joblib.load(model_path)
         
@@ -57,9 +66,9 @@ def predict_fraud(input_data, model_path='model/XGBoost_model.joblib'):
         
         # Reorder the columns to the correct order.
         input_df = input_df[['num__amount','num__oldbalanceOrg','num__newbalanceOrig',
-                             'num__oldbalanceDest','num__newbalanceDest','num__balanceDeltaOrg',
-                             'num__balanceDeltaDest','cat__type_CASH_IN','cat__type_CASH_OUT',
-                             'cat__type_DEBIT','cat__type_PAYMENT','cat__type_TRANSFER']]
+                               'num__oldbalanceDest','num__newbalanceDest','num__balanceDeltaOrg',
+                               'num__balanceDeltaDest','cat__type_CASH_IN','cat__type_CASH_OUT',
+                               'cat__type_DEBIT','cat__type_PAYMENT','cat__type_TRANSFER']]
         
         # Rename the columns to match the model's expected order.
         input_df.columns = ['0','1','2','3','4','5','6','7','8','9','10','11']
@@ -72,8 +81,8 @@ def predict_fraud(input_data, model_path='model/XGBoost_model.joblib'):
         
         return fraud_prediction
 
-    except FileNotFoundError:
-        print(f"Error: Model file not found at {model_path}")
+    except FileNotFoundError as e:
+        print(f"Error: {e}")
         return None
     except Exception as e:
         print(f"An error occurred: {e}")
