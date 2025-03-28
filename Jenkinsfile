@@ -6,6 +6,9 @@ pipeline {
         DOCKERHUB_CREDENTIAL_ID = 'Fraud_Detect_DockerHub'
         DOCKERHUB_REGISTRY = 'https://registry.hub.docker.com'
         DOCKERHUB_REPOSITORY = 'subha2001/financial_fraud_prediction'
+        AWS_ACCESS_KEY_ID = 'AKIAXULOVUEKQLMRAMVF'
+        AWS_SECRET_ACCESS_KEY = '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'
+        AWS_DEFAULT_REGION = 'eu-north-1'
     }
     
     stages {
@@ -76,7 +79,7 @@ pipeline {
                 script {
                     // AWS Deployment
                     echo 'AWS Deployment.....'
-                    withEnv(['AWS_REGION=eu-north-1']){
+                    withEnv(['AWS_ACCESS_KEY_ID=your_access_key', 'AWS_SECRET_ACCESS_KEY=your_secret_key', 'AWS_DEFAULT_REGION=eu-north-1']) {
                         sh "aws ecs update-service --cluster Finance_Fraud_Detect_ECS --service Financial_Fraud_Service --force-new-deployment --region eu-north-1"
                     }
                 }
@@ -85,3 +88,5 @@ pipeline {
 
     }
  }
+
+ sed -i 's/<useSecurity>true<\/useSecurity>/<useSecurity>false<\/useSecurity>/g' config.xml
