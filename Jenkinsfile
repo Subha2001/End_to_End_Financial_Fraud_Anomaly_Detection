@@ -76,7 +76,9 @@ pipeline {
                 script {
                     // AWS Deployment
                     echo 'AWS Deployment.....'
-                    sh "aws ecs update-service --cluster Finance_Fraud_Detect_ECS --service Financial_Fraud_Service --force-new-deployment --region eu-north-1"
+                    withEnv(['AWS_REGION=eu-north-1']){
+                        sh "aws ecs update-service --cluster Finance_Fraud_Detect_ECS --service Financial_Fraud_Service --force-new-deployment --region eu-north-1"
+                    }
                 }
             }
         }
