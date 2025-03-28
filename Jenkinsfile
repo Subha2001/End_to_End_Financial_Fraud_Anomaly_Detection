@@ -81,7 +81,7 @@ pipeline {
                         'AWS_SECRET_ACCESS_KEY=2DeDKoSVSnw/NamMastqtnHzqb4X6fWDA81Q+klF',
                         'AWS_DEFAULT_REGION=eu-north-1'
                         ]) {
-                        sh "aws ecs update-service --cluster Finance_Fraud_Detect_ECS --service Financial_Fraud_Service --region eu-north-1 --profile default --force-new-deployment"
+                        sh "aws ecs update-service --cluster Finance_Fraud_Detect_ECS --service Financial_Fraud_Service --region eu-north-1 --force-new-deployment --debug"
                     }
                 }
             }
