@@ -76,12 +76,7 @@ pipeline {
                 script {
                     // AWS Deployment
                     echo 'AWS Deployment.....'
-                    withEnv([
-                        'AWS_ACCESS_KEY_ID=AKIAXULOVUEKQLMRAAMVF',
-                        'AWS_SECRET_ACCESS_KEY=2DeDKoSVSnw/NamMastqtnHzqb4X6fWDA81Q+klF',
-                        'AWS_DEFAULT_REGION=eu-north-1'
-                        ]) {
-                        sh 'aws ecs update-service --cluster Finance_Fraud_Detect_ECS --service Financial_Fraud_Service --force-new-deployment'
+                        sh "aws ecs update-service --cluster dataguru_ecs --service dataguru_service --force-new-deployment"
                     }
                 }
             }
