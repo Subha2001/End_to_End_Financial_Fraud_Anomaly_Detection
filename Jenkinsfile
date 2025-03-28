@@ -45,12 +45,12 @@ pipeline {
             }
         }
 
-        stage('Trivy Scanning') {
+        stage('Building Docker Image') {
             steps {
                 script {
-                    // Trivy Scanning
-                    echo 'Trivy Scanning.....'
-                    sh "trivy fs ./ --format table -o trivy-fs-report.html"
+                    // Building Docker Image
+                    echo 'Building Docker Image.....'
+                    docker.build("Fraud_Detection")
                 }
             }
         }
