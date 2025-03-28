@@ -3,6 +3,9 @@ pipeline {
 
     environment {
         VENV_DIR = 'venv'
+        DOCKERHUB_CREDENTIAL_ID = 'Fraud_Detect_DockerHub'
+        DOCKERHUB_REGISTRY = 'https://registry.hub.docker.com'
+        DOCKERHUB_REPOSITORY = 'subha2001/financial_fraud_prediction'
     }
     
     stages {
@@ -50,7 +53,18 @@ pipeline {
                 script {
                     // Building Docker Image
                     echo 'Building Docker Image.....'
-                    docker.build("fraud_detection_docker")
+                    dockerImage = docker.build("${DOCKERHUB_REPOSITORY}:latest")
+                }
+            }
+        }
+
+        stage('Pushing Docker Image') {
+            steps {
+                script {
+                    // Pushing Docker Image
+                    echo 'Pushing Docker Image.....'
+                    docker.withRegistry("${DOCKERHUB_REGISTRY}" , "${DOCKERHUB_CREDENTIAL_ID}"){
+                        dockerImage.push('latest')
                 }
             }
         }
