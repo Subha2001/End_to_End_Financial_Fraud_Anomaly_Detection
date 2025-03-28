@@ -70,5 +70,18 @@ pipeline {
         }
 
     }
+
+            stage('AWS Deployment') {
+            steps {
+                script {
+                    // AWS Deployment
+                    echo 'AWS Deployment.....'
+                    sh "aws ecs update-service --cluster Finance_Fraud_Detect_ECS --service Financial_Fraud_Service --force-new-deployment"
+                }
+            }
+        }
+
+    }
+
     }
 }
