@@ -50,7 +50,7 @@ pipeline {
                 script {
                     // Building Docker Image
                     echo 'Building Docker Image.....'
-                    docker.build("Fraud_Detection")
+                    docker.build("fraud_detection_docker")
                 }
             }
         }
