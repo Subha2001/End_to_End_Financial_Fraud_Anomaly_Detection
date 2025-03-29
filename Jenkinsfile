@@ -71,15 +71,25 @@ pipeline {
 
     }
 
-            stage('AWS Deployment') {
+
+        stage('AWS Deployment') {
             steps {
                 script {
                     // AWS Deployment
                     echo 'AWS Deployment.....'
-                        sh "aws ecs update-service --cluster dataguru_ecs --service dataguru_service --force-new-deployment"
-                    }
+                    withCredentials([aws(credentialsId: 'aws-cred', variable: 'AWS')]) {
+                        sh '''
+                            aws ecs update-service \
+                              --cluster Finance_Fraud_Detect_ECS \
+                              --service Financial_Fraud_Service \
+                              --force-new-deployment \
+                              --region eu-north-1
+                         '''
                 }
             }
         }
 
+    }
+
+    }
     }
