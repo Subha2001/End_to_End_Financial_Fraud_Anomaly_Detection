@@ -1,4 +1,4 @@
-# End_to_End_Finance_ChatBot
+# End_to_End_Financial_Fraud_Anomaly_Detection
 
 **Workflow Point 1**:
 - **Development**: Conducted comprehensive Exploratory Data Analysis (EDA), executed data preprocessing and feature engineering incorporating the SMOTE Technique to address class imbalance. Developed and trained Machine Learning (ML) and Deep Learning (DL) models using the XGBoost algorithm, achieving an 86% Matthews Correlation Coefficient (MCC) score. Implemented experiment tracking using MLflow and data management with Data Version Control (DVC).
